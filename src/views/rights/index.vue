@@ -1,5 +1,5 @@
 <template>
-  <div>rights</div>
+  <div>rights </div>
 </template>
 
 <script setup></script>
