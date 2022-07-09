@@ -67,6 +67,7 @@ module.exports = {
       .end()
   },
   devServer: {
+    hot: true,
     https: false,
     hotOnly: false,
     proxy: {
