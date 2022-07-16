@@ -9,30 +9,22 @@
     unique-opened
     :collapse="!$store.getters.siderType"
   >
-    <Menus :routerList="menuRouter"></Menus>
+    <Menus :routerList="routerList"></Menus>
   </el-menu>
 </template>
 
 <script setup>
-import { menuList } from '@/api/menu'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import variables from '@/styles/variables.scss'
 import Menus from './Menus.vue'
 import { menuRouter } from '@/router/menuRouter.js'
+import parseMenu from '@/utils/parseMenu.js'
 
 // const iconList = ref(['user', 'setting', 'shop', 'tickets', 'pie-chart'])
 // const icon = ref('menu')
 
 const defaultActive = ref(sessionStorage.getItem('path') || '/users')
-const menusList = ref([])
-const initMenusList = async () => {
-  menusList.value = await menuList()
-}
-initMenusList()
-
-// const savePath = (path) => {
-//   sessionStorage.setItem('path', `/${path}`)
-// }
+const routerList = computed(() => parseMenu(menuRouter))
 </script>
 
 <style lang="scss" scoped></style>
