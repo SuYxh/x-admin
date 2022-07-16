@@ -8,6 +8,7 @@ function resolve(dir) {
 }
 const webpack = require('webpack')
 module.exports = {
+  publicPath: process.env.NODE_ENV === 'production' ? '/x-admin/' : '/', // 区分开发环境和生产环境
   configureWebpack: (config) => {
     config.plugins.push(
       AutoImport({
